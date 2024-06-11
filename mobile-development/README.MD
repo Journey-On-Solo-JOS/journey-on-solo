@@ -1,1 +1,1 @@
-# This is repository for Mobile Development
+# Source Code for Android Applications
