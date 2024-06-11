@@ -1,17 +1,19 @@
-# Journey on Solo
-
-This repository is for the Bangkit Final Capstone project of team C241-PS073.
+# Bangkit Capstone 2024: Journey on Solo (C241-PS073)
 
 ## Introduction
 
+Journey on Solo is an travel app designed for solo travelers exploring Solo, Indonesia's culturally diverse city. Utilizing Machine Learning, the app offers a seamless travel experience, providing detailed information on tourist attractions, historical sites, temples, museums, and cultural performances.
+
 ### Team Member<br>
 
-- M200D4KY1435 – Fauzan Ramadhan Putra
-- M338D4KY2946 – Azarya Paska Saputra
-- M200D4KY2013 – Arya Dheffan Shevchenko
-- C338D4KY0970 – Laurensius Liquori Igridfian
-- C315D4KX1275 – Dwi Qisah Sally Ananda
-- A200D4KY3482 – Devin Januar Siahaan
-- A568D4NY4612 – Rizky Nur Arifin
+| Name                         | Bangkit ID   | Learning Path      |
+| ---------------------------- | ------------ | ------------------ |
+| Fauzan Ramadhan Putra        | M200D4KY1435 | Machine Learning   |
+| Azarya Paska Saputra         | M338D4KY2946 | Machine Learning   |
+| Arya Dheffan Shevchenko      | M200D4KY2013 | Machine Learning   |
+| Laurensius Liquori Igridfian | C338D4KY0970 | Cloud Computing    |
+| Dwi Qisah Sally Ananda       | C315D4KX1275 | Cloud Computing    |
+| Devin Januar Siahaan         | A200D4KY3482 | Mobile Development |
+| Rizky Nur Arifin             | A568D4NY4612 | Mobile Development |
 
 ## About this project
