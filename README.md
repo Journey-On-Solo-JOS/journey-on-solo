@@ -16,4 +16,14 @@ Journey on Solo is an travel app designed for solo travelers exploring Solo, Ind
 | Devin Januar Siahaan         | A200D4KY3482 | Mobile Development |
 | Rizky Nur Arifin             | A568D4NY4612 | Mobile Development |
 
-## About this project
+## Architectur
+
+Eu mollit veniam non ullamco.
+
+## Model Performance
+
+Velit amet occaecat aute sit ex anim consequat occaecat consequat consequat exercitation.
+
+## Application Demo
+
+Esse minim nostrud cupidatat tempor.
