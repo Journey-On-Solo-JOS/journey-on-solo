@@ -4,7 +4,7 @@
 
 Journey on Solo is an travel app designed for solo travelers exploring Solo, Indonesia's culturally diverse city. Utilizing Machine Learning, the app offers a seamless travel experience, providing detailed information on tourist attractions, historical sites, temples, museums, and cultural performances.
 
-### Team Member<br>
+## Team Member
 
 | Name                         | Bangkit ID   | Learning Path      |
 | ---------------------------- | ------------ | ------------------ |
