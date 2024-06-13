@@ -22,3 +22,9 @@ Velit exercitation laboris sit pariatur Lorem.
 6. install pm2
 7. reserve ip statics
 8. pakainya fastapi
+
+install
+sudo apt install python3-pip
+python3 -m venv .venv
+source .venv/bin/activate
+pip install fastapi uvicorn firebase-admin
