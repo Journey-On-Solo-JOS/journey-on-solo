@@ -21,3 +21,4 @@ Velit exercitation laboris sit pariatur Lorem.
 5. service account firestore (Applied ML)
 6. install pm2
 7. reserve ip statics
+8. pakainya fastapi
