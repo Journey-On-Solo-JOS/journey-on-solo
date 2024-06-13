@@ -11,3 +11,9 @@ git clone
 3. npm install csv-parse
 
 Velit exercitation laboris sit pariatur Lorem.
+
+# pakai compute engine
+
+1. buat GCE
+2. sudo apt-get update
+3. install nvm dulu
