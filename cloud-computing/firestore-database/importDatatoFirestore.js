@@ -12,11 +12,10 @@ const resource = {
   type: 'global',
 };
 
-// place_id,name,rating,reviews_count,long,lat,category,caption_idn,caption_eng
 function writeToDatabase(records) {
   records.forEach((record, i) => {
     console.log(
-      `place_id: ${record.place_id} name: ${record.name} rating: ${record.rating} reviews_count: ${record.reviews_count} long: ${record.long} lat: ${record.lat} caption_idn: ${record.caption_idn} caption_eng: ${record.caption_eng}`
+      `place_id: ${record.place_id} name: ${record.name} rating: ${record.rating} reviews_count: ${record.reviews_count} long: ${record.long} lat: ${record.lat} address: ${record.address} caption_idn: ${record.caption_idn} caption_eng: ${record.caption_eng}`
     );
   });
   return;
