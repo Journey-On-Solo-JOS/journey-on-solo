@@ -39,7 +39,7 @@ def fetch_long_lat(doc):
     }
     
 # Mount the static files directory
-app.mount("/img", StaticFiles(directory="img"), name="img")
+app.mount("/img", StaticFiles(directory="/src/img"), name="img")
 
 @app.get("/data")
 async def get_data():
