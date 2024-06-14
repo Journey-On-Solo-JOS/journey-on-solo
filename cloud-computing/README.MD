@@ -26,6 +26,19 @@ git checkout master
 git sparse-checkout set cloud-computing/
 ```
 
+# Import database
+
+```
+cd firestore-database
+```
+
+```
+npm install @google-cloud/firestore
+npm install @google-cloud/logging
+npm install csv-parse
+
+```
+
 # Install Back-End API
 
 intine install requirement dulu (dependencies)
