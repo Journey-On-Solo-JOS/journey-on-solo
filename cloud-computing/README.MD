@@ -4,7 +4,29 @@ This repository contains for BackEnd API Endpoint
 
 ## How to run
 
-git clone
+```
+git clone --filter=blob:none --no-checkout https://github.com/Journey-On-Solo-JOS/journey-on-solo.git
+```
+
+Make new folder in your computer and switch to inside folder
+
+```
+cd <FOLDER NAME>
+```
+
+```
+git sparse-checkout set --cone
+```
+
+```
+git checkout master
+```
+
+```
+git sparse-checkout set cloud-computing/
+```
+
+# Install Back-End API
 
 1. npm install @google-cloud/firestore
 2. npm install @google-cloud/logging
