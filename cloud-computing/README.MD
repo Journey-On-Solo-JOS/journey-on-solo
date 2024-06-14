@@ -59,10 +59,10 @@ npm install
 8. pakainya fastapi
 
 install
-sudo apt install python3-pip
-python3 -m venv .venv
-source .venv/bin/activate
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+sudo apt-get install git python3-pip python3-venv
+python3 -m venv myenv
+source myenv/bin/activate
 pip install fastapi uvicorn firebase-admin
-
-pm2
+npm install -g pm2
 pm2 start pm2.config.js
