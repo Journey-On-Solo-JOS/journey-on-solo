@@ -28,6 +28,8 @@ git sparse-checkout set cloud-computing/
 
 # Install Back-End API
 
+intine install requirement dulu (dependencies)
+
 1. npm install @google-cloud/firestore
 2. npm install @google-cloud/logging
 3. npm install csv-parse
