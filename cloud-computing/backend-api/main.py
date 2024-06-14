@@ -23,8 +23,9 @@ def fetch_fields(doc):
         'name': doc.get('name'),
         'rating': doc.get('rating'),
         'reviews_count': doc.get('reviews_count'),
-        'long': doc.get('long'),
+        'address': doc.get('address'),
         'lat': doc.get('lat'),
+        'long': doc.get('long'),        
         'category': doc.get('category'),
         'caption_idn': doc.get('caption_idn'),
         'caption_eng': doc.get('caption_eng')
@@ -34,17 +35,21 @@ def fetch_fields(doc):
 def fetch_long_lat(doc):
     # Extract 'long' and 'lat' fields from the Firestore document
     return {
-        'long': doc.get('long'),
-        'lat': doc.get('lat')
+        'lat': doc.get('lat'),
+        'long': doc.get('long')        
     }
     
 # Mount the static files directory
-app.mount("/img", StaticFiles(directory="/src/img"), name="img")
+app.mount("/img", StaticFiles(directory="img"), name="img")
+
+@app.get("/")
+def read_root():
+    return {"REST API for Journey on Solo"}
 
 @app.get("/data")
 async def get_data():
     try:
-        collection_ref = db.collection('tourism')
+        collection_ref = db.collection('location')
         docs = collection_ref.stream()
         
         # Initialize an empty list to store formatted data
@@ -64,7 +69,7 @@ async def get_data():
 @app.get("/data/{place_id}")
 async def get_data_fields(place_id: str):
     try:
-        collection_ref = db.collection('tourism')
+        collection_ref = db.collection('location')
         
         # Query Firestore for documents where 'place_id' matches
         query_ref = collection_ref.where('place_id', '==', place_id).limit(1).get()
@@ -89,7 +94,7 @@ async def get_data_fields(place_id: str):
 @app.get("/coordinates/{place_id}")
 async def get_coordinates(place_id: str):
     try:
-        collection_ref = db.collection('tourism')
+        collection_ref = db.collection('location')
         
         # Query Firestore for documents where 'place_id' matches
         query_ref = collection_ref.where('place_id', '==', place_id).limit(1).get()
