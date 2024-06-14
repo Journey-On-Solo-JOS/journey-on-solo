@@ -28,3 +28,6 @@ sudo apt install python3-pip
 python3 -m venv .venv
 source .venv/bin/activate
 pip install fastapi uvicorn firebase-admin
+
+pm2
+pm2 start pm2.config.js
