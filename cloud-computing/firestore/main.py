@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 import firebase_admin
 from firebase_admin import credentials, firestore
 import os
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -35,6 +37,9 @@ def fetch_long_lat(doc):
         'long': doc.get('long'),
         'lat': doc.get('lat')
     }
+    
+# Mount the static files directory
+app.mount("/img", StaticFiles(directory="img"), name="img")
 
 @app.get("/data")
 async def get_data():
