@@ -1,11 +1,10 @@
-from fastapi import FastAPI, HTTPException, Query
-from typing import Optional
+from fastapi import FastAPI, HTTPException
 import firebase_admin
 from firebase_admin import credentials, firestore
 import os
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
-import logging
+import httpx
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -16,9 +15,6 @@ firebase_admin.initialize_app(cred)
 
 # Initialize Firestore client
 db = firestore.client()
-
-# Configure logging
-logging.basicConfig(level=logging.DEBUG)
 
 # Define a function to fetch specific fields from Firestore document
 def fetch_fields(doc):
@@ -32,17 +28,14 @@ def fetch_fields(doc):
         'lat': doc.get('lat'),
         'long': doc.get('long'),        
         'category': doc.get('category'),
-        'image_url': f"http://34.101.153.83:3000/img/{doc.id}.jpg",
         'caption_idn': doc.get('caption_idn'),
         'caption_eng': doc.get('caption_eng')
     }
     
 # Define a function to fetch specific fields from Firestore document
-def fetch_lon_lat(doc):
+def fetch_long_lat(doc):
     # Extract 'long' and 'lat' fields from the Firestore document
     return {
-        'place_id': doc.id,
-        'name': doc.get('name'),
         'lat': doc.get('lat'),
         'long': doc.get('long')        
     }
@@ -73,9 +66,9 @@ async def get_data():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Endpoint display detail
+# New endpoint to combine data and image URL
 @app.get("/data/{place_id}")
-async def get_detail_data(place_id: str):
+async def get_combined_data(place_id: str):
     try:
         # Fetch data from Firestore
         collection_ref = db.collection('location')
@@ -83,7 +76,7 @@ async def get_detail_data(place_id: str):
         for doc in query_ref:
             data = fetch_fields(doc)
             # Add the image URL to the response
-            # data['image_url'] = f"34.101.153.83:3000/img/{place_id}.jpg"
+            data['image_url'] = f"localhost:8000/img/{place_id}.jpg"
             return data
         raise HTTPException(status_code=404, detail=f"Document with place_id '{place_id}' not found")
     except HTTPException as e:
@@ -91,25 +84,30 @@ async def get_detail_data(place_id: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Endpoint to fetch all 'lon' and 'lat'
-@app.get("/coordinates")
-async def get_all_coordinates():
-    try:
-        collection_ref = db.collection('location')
-        docs = collection_ref.stream()
+# # Endpoint to fetch document fields by place_id
+# @app.get("/data/{place_id}")
+# async def get_data_fields(place_id: str):
+#     try:
+#         collection_ref = db.collection('location')
         
-        # Initialize an empty list to store long and lat data
-        coordinates = []
+#         # Query Firestore for documents where 'place_id' matches
+#         query_ref = collection_ref.where('place_id', '==', place_id).limit(1).get()
         
-        # Iterate over documents and fetch long and lat
-        for doc in docs:
-            data = fetch_lon_lat(doc)
-            coordinates.append(data)
-            
-        return coordinates
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+#         # Check if any documents match the query
+#         for doc in query_ref:
+#             data = fetch_fields(doc)
+#             return data
+        
+#         # If no document found with the given place_id
+#         raise HTTPException(status_code=404, detail=f"Document with place_id '{place_id}' not found")
+    
+#     except HTTPException:
+#         # Propagate HTTP exceptions (e.g., 404) as they are
+#         raise
+    
+#     except Exception as e:
+#         # Handle other exceptions with a generic 500 Internal Server Error
+#         raise HTTPException(status_code=500, detail=str(e))
     
 # Endpoint to fetch only 'long' and 'lat' by place_id
 @app.get("/coordinates/{place_id}")
@@ -123,7 +121,7 @@ async def get_coordinates(place_id: str):
         # Check if any documents match the query
         for doc in query_ref:
             # Fetch only 'long' and 'lat' fields
-            data = fetch_lon_lat(doc)
+            data = fetch_long_lat(doc)
             return data
         
         # If no document found with the given place_id
@@ -135,39 +133,4 @@ async def get_coordinates(place_id: str):
     
     except Exception as e:
         # Handle other exceptions with a generic 500 Internal Server Error
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# New endpoint for search functionality
-@app.get("/search")
-async def search_data(
-    name: Optional[str] = Query(None, description="Name to search for"),
-):
-    try:
-        # Log the query parameter
-        logging.debug(f"Search query parameter: name='{name}'")
-
-        collection_ref = db.collection('location')
-        query = collection_ref
-        
-        if name:
-            query = query.where('name', '==', name)
-        
-        docs = query.stream()
-        
-        # Log the raw documents fetched
-        raw_docs = list(docs)
-        logging.debug(f"Raw documents fetched: {raw_docs}")
-        
-        results = []
-        
-        for doc in raw_docs:
-            data = fetch_fields(doc)
-            results.append(data)
-        
-        logging.debug(f"Search results: {results}")
-        return results
-
-    except Exception as e:
-        logging.error(f"Error during search: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
