@@ -138,6 +138,7 @@ async def get_coordinates(place_id: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+
 # New endpoint for search functionality
 @app.get("/search")
 async def search_data(
@@ -147,7 +148,7 @@ async def search_data(
         # Log the query parameter
         logging.debug(f"Search query parameter: name='{name}'")
 
-        collection_ref = db.collection('location')
+        collection_ref = db.collection('location')  # Ensure you are querying the correct collection
         query = collection_ref
         
         if name:
@@ -155,7 +156,7 @@ async def search_data(
         
         docs = query.stream()
         
-        # Log the raw documents fetched
+        # Convert to list and log the raw documents fetched
         raw_docs = list(docs)
         logging.debug(f"Raw documents fetched: {raw_docs}")
         
@@ -166,6 +167,10 @@ async def search_data(
             results.append(data)
         
         logging.debug(f"Search results: {results}")
+        
+        if not results:
+            logging.debug("No documents matched the query.")
+        
         return results
 
     except Exception as e:
