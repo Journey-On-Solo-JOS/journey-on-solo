@@ -2,3 +2,4 @@
 /cloud-computing/backend-api/__pycache__/
 /cloud-computing/backend-api/myenv/
 cloud-computing/firestore-database/package-lock.json
+cloud-computing/backend-api/serviceAccountKey.json
