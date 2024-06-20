@@ -22,14 +22,4 @@ Journey on Solo is an travel app designed for solo travelers exploring Solo, Ind
 - Machine Learning (https://github.com/Journey-On-Solo-JOS/Mobile-Development)
 - Mobile Development (https://github.com/Journey-On-Solo-JOS/Machine-Learning)
 
-## Architectur
-
-Eu mollit veniam non ullamco.
-
-## Model Performance
-
-Velit amet occaecat aute sit ex anim consequat occaecat consequat consequat exercitation.
-
-## Application Demo
-
-Esse minim nostrud cupidatat tempor.
+You can read the corresponding learning path's readme in its folder.
