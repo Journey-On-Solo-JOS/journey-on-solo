@@ -16,6 +16,12 @@ Journey on Solo is an travel app designed for solo travelers exploring Solo, Ind
 | Devin Januar Siahaan         | A200D4KY3482 | Mobile Development |
 | Rizky Nur Arifin             | A568D4NY4612 | Mobile Development |
 
+## Repository
+
+- Cloud Computing (https://github.com/Journey-On-Solo-JOS/Cloud-Computing)
+- Machine Learning (https://github.com/Journey-On-Solo-JOS/Mobile-Development)
+- Mobile Development (https://github.com/Journey-On-Solo-JOS/Machine-Learning)
+
 ## Architectur
 
 Eu mollit veniam non ullamco.
