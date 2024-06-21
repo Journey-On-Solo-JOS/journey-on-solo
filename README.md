@@ -19,7 +19,7 @@ Journey on Solo is an travel app designed for solo travelers exploring Solo, Ind
 ## Repository
 
 - Cloud Computing (https://github.com/Journey-On-Solo-JOS/Cloud-Computing)
-- Machine Learning (https://github.com/Journey-On-Solo-JOS/Mobile-Development)
-- Mobile Development (https://github.com/Journey-On-Solo-JOS/Machine-Learning)
+- Mobile Development (https://github.com/Journey-On-Solo-JOS/Mobile-Development)
+- Machine Learning (https://github.com/Journey-On-Solo-JOS/Machine-Learning)
 
 You can read the corresponding learning path's readme in its folder.
